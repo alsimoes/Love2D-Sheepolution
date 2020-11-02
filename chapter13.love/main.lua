@@ -18,6 +18,7 @@ function love.load()
 end
 
 function checkCollision(a, b)
+    -- É comum usar underscore para variaveis locais.
     local a_left = a.x
     local a_right = a.x + a.width
     local a_top = a.y
@@ -27,8 +28,22 @@ function checkCollision(a, b)
     local b_right = b.x + b.width
     local b_top = b.y
     local b_botton = b.y + b.height
-
-    
+       
+    -- Checa se...   
+    -- a possição do lado direito de "a" é maior que a posição do lado esquedo de "b"...
+    if a_right > b_left and
+       -- a possição do lado esquedo de "a" é menor que a posição do lado direito de "b"...
+       a_left < b_right and
+       -- a possição do lado de baixo de "a" é maior que a posição do lado de cima de "b"...
+       a_botton > b_top and 
+       -- a possição do lado de cima de "a" é menor que a posição do lado de baixo de "b"...
+       a_top < b_botton then
+        -- resultando TRUE para todas as alternativas há uma colisão
+        return true
+    else
+        -- senão não há coplisão
+        return false
+    end
 end
 
 function love.update(dt)
@@ -37,6 +52,13 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.rectangle("line", r1.x, r1.y, r1.width, r1.height)
-    love.graphics.rectangle("line", r2.x, r2.y, r2.width, r2.height)
+    local mode
+    if checkCollision(r1, r2) then
+        mode = "fill"
+    else
+        mode = "line"
+    end 
+
+    love.graphics.rectangle(mode, r1.x, r1.y, r1.width, r1.height)
+    love.graphics.rectangle(mode, r2.x, r2.y, r2.width, r2.height)
 end
