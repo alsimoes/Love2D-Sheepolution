@@ -14,14 +14,24 @@ function love.load()
 
 end
 
+function love.keypressed(key)
+    player:keyPressed(key)
+end
+
 function love.update(dt)
     player:update(dt)
     enemy:update(dt)
-    bullet:update(dt)
+    
+    for i,bullet in ipairs(lsitOfBullets) do
+        bullet:update(dt)
+    end
 end
 
 function love.draw()
     player:draw()
     enemy:draw()
 
+    for i,bullet in ipairs(lsitOfBullets) do
+        bullet:draw()
+    end
 end
