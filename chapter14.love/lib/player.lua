@@ -7,7 +7,7 @@ Player = Object:extend()
 
 function Player:new()
     self.image = love.graphics.newImage("assets/panda.png") 
-    self.x = 300
+    self.x = love.graphics.getWidth() / 2 -(self.image:getWidth() /2)
     self.y = 20
     self.speed = 500
     self.width = self.image:getWidth()

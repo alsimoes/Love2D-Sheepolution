@@ -7,7 +7,7 @@ Enemy = Object:extend()
 
 function Enemy:new()
     self.image = love.graphics.newImage("assets/snake.png")
-    self.x = 325
+    self.x = love.graphics.getWidth() / 2 - (self.image:getWidth() /2)
     self.y = 590
     self.speed = 100
     self.width = self.image:getWidth()
