@@ -14,11 +14,13 @@ function Player:new()
     self.height = self.image:getHeight()
     self.health = 1
     self.listOfHearts = {}
-    table.insert(self.listOfHearts, love.graphics.newImage("assets/heart_1.png"))
-    table.insert(self.listOfHearts, love.graphics.newImage("assets/heart_2.png"))
-    table.insert(self.listOfHearts, love.graphics.newImage("assets/heart_3.png"))
-    table.insert(self.listOfHearts, love.graphics.newImage("assets/heart_4.png"))
-    table.insert(self.listOfHearts, love.graphics.newImage("assets/heart_5.png"))
+
+    for i=1,5 do
+        table.insert(self.listOfHearts, love.graphics.newImage("assets/heart_"..i..".png"))
+    end 
+
+    print(love.graphics.getColorMask(self.image))
+
 end
 
 function Player:getHit()
@@ -30,7 +32,7 @@ end
 function Player:keyPressed(key)
     if key == "space" and (self.health < 5) then
         table.insert(lsitOfBullets, Bullet(self.x+(self.width/2)-4, self.y+self.height))
-    elseif key == "escape" and self.health == 5 then
+    elseif key == "s" and self.health == 5 then
         love.load()
     end
 end

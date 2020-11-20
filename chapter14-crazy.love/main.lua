@@ -3,6 +3,7 @@
 -- Main file: the entry point of the game.
 --
 function love.load()
+    --updateScreen()
     Object = require("lib.classic")
     require "lib.player"
     require "lib.enemy"
@@ -18,6 +19,22 @@ end
 
 function love.keypressed(key)
     player:keyPressed(key)
+    
+    if key == "f" then 
+        updateScreen()
+    end
+    
+    if key == "escape" then
+        love.event.quit()
+    end
+end
+
+function updateScreen()
+    if love.window.getFullscreen() then
+        love.window.setFullscreen(false, "desktop")
+    else
+        love.window.setFullscreen(true, "desktop")
+    end 
 end
 
 function love.update(dt)
