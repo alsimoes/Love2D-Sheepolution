@@ -3,7 +3,7 @@
 -- Main file: the entry point of the game.
 --
 function love.load()
-    --updateScreen()
+    -- updateScreen()
     Object = require("lib.classic")
     require "lib.player"
     require "lib.enemy"
