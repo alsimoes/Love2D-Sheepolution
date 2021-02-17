@@ -3,6 +3,10 @@
 -- Main file: the entry point of the game.
 --
 function love.load()
+<<<<<<< Updated upstream
+=======
+    -- updateScreen()
+>>>>>>> Stashed changes
     Object = require("lib.classic")
     require "lib.player"
     require "lib.enemy"
